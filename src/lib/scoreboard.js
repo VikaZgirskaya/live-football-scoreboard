@@ -1,4 +1,7 @@
 export const startGame = (games, gameData) => {
+    if (games.some(game => game.gameId === gameData.gameId)) {
+        throw new Error('The game already started.');
+    }
   
     return [
         ...games,

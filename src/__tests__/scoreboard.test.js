@@ -1,6 +1,6 @@
 import { startGame } from '../lib/scoreboard';
 
-describe('startGame()', () => {
+describe('Live Football Scoreboard', () => {
     const gameOne = {
         gameId: 1,
         homeTeam: 'Mexico',
