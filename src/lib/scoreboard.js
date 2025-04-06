@@ -35,5 +35,10 @@ export const updateGameScore = (games, gameData) => {
 
 
 export const finishGame = (games, gameId) => {
-    return games;
+    return games.map(game => {
+        if (game.gameId === gameId) {
+           return { ...game, gameFinished: true };
+        }
+        return game;
+    });
 };
