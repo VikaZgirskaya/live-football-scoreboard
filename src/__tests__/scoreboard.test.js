@@ -5,6 +5,7 @@ describe('Live Football Scoreboard', () => {
         gameId: 1,
         homeTeam: 'Mexico',
         awayTeam: 'Canada',
+        gameFinished: false,
         timestamp: 1712418744000,
     }
 
@@ -18,7 +19,6 @@ describe('Live Football Scoreboard', () => {
             homeGoals: 0,
             awayGoals: 0,
             gameGoals: 0,
-            gameFinished: false,
         });
     });
 
@@ -28,6 +28,7 @@ describe('Live Football Scoreboard', () => {
             gameId: 2,
             homeTeam: 'Spain',
             awayTeam: 'Brazil',
+            gameFinished: false,
             timestamp: 1712425944000,
         }
         const result = startGame(games, gameTwo);
@@ -38,7 +39,6 @@ describe('Live Football Scoreboard', () => {
             homeGoals: 0,
             awayGoals: 0,
             gameGoals: 0,
-            gameFinished: false,
         });
     });
 
@@ -56,7 +56,6 @@ describe('Live Football Scoreboard', () => {
           ...gameOne,
           homeGoals: 0,
           awayGoals: 1,
-          timestamp: 1712420244000,
         };
       
         const result = updateGameScore(games, updatedGame);
@@ -65,7 +64,6 @@ describe('Live Football Scoreboard', () => {
         expect(result[0]).toEqual({
           ...updatedGame,
           gameGoals: updatedGame.homeGoals + updatedGame.awayGoals,
-          gameFinished: false,
         });
       });
 });

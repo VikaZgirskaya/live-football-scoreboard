@@ -19,6 +19,16 @@ export const startGame = (games, gameData) => {
 };
 
 
-export const updateGameScore = (games, newGameData) => {
-    return games;
+export const updateGameScore = (games, gameData) => {
+    return games.map(game => {
+        if (game.gameId === gameData.gameId) {
+            return { 
+                ...game, 
+                homeGoals: gameData.homeGoals, 
+                awayGoals: gameData.awayGoals,
+                gameGoals: gameData.homeGoals + gameData.awayGoals,
+            };
+        }
+        return game;
+    });
 };
