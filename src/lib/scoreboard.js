@@ -32,3 +32,8 @@ export const updateGameScore = (games, gameData) => {
         return game;
     });
 };
+
+
+export const finishGame = (games, gameId) => {
+    return games;
+};
