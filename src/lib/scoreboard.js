@@ -17,3 +17,8 @@ export const startGame = (games, gameData) => {
         }
     ];
 };
+
+
+export const updateGameScore = (games, newGameData) => {
+    return games;
+};
