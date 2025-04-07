@@ -45,5 +45,10 @@ export const finishGame = (games, gameId) => {
 
 
 export const getOnlineGamesSummary = games => {
-    return games;
+    return [...games]
+        .filter(game => !game.gameFinished)
+        .sort((a, b) => {
+            if (a.gameGoals !== b.gameGoals) return b.gameGoals - a.gameGoals;
+            return b.timestamp - a.timestamp;
+        });
 };
