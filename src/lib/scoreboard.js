@@ -42,3 +42,8 @@ export const finishGame = (games, gameId) => {
         return game;
     });
 };
+
+
+export const getOnlineGamesSummary = games => {
+    return games;
+};

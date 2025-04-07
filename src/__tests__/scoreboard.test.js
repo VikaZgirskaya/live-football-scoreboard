@@ -1,4 +1,4 @@
-import { startGame, updateGameScore, finishGame } from '../lib/scoreboard';
+import { startGame, updateGameScore, finishGame, getOnlineGamesSummary } from '../lib/scoreboard';
 
 describe('Live Football Scoreboard', () => {
     const gameOne = {
@@ -133,6 +133,49 @@ describe('Live Football Scoreboard', () => {
         });
         expect(resultTwo[2]).toEqual(gameThree);
     });
-    
 
+    test('get sorted online games', () => {
+        const updatedGameOne = {
+            ...gameOne,
+            gameGoals: 5,
+        };
+
+        const updatedGameTwo = {
+            ...gameTwo,
+            gameGoals: 12,
+        };
+
+        const updatedGameThree = {
+            ...gameThree,
+            gameGoals: 4,
+        };
+
+        const gameFour = {
+            gameId: 4,
+            homeTeam: 'Uruguay',
+            awayTeam: 'Italy',
+            gameFinished: false,
+            gameGoals: 12,
+            timestamp: 1712429754000,
+        }
+
+        const gameFinished = {
+            gameId: 5,
+            homeTeam: 'England',
+            awayTeam: 'Poland',
+            gameFinished: true,
+            gameGoals: 0,
+            timestamp: 1712401144000,
+        }
+
+        const games = [gameFinished, updatedGameOne, updatedGameTwo, updatedGameThree, gameFour];
+      
+        const result = getOnlineGamesSummary(games);
+      
+        expect(result).toHaveLength(4);
+        expect(result[0]).toEqual(gameFour);
+        expect(result[1]).toEqual(updatedGameTwo);
+        expect(result[2]).toEqual(updatedGameOne);
+        expect(result[3]).toEqual(updatedGameThree);
+    });
 });
